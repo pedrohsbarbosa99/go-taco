@@ -1,4 +1,4 @@
-package handler
+package main
 
 import (
 	"example/go-taco/handlers"
@@ -8,12 +8,13 @@ import (
 	"github.com/go-chi/chi"
 )
 
-func Handler(w http.ResponseWriter, request *http.Request) {
+func main() {
 	r := chi.NewRouter()
-	r.Get("/api/taco", handlers.List)
+	r.Get("/taco", handlers.List)
 	err := http.ListenAndServe(":3000", r)
 	if err != nil {
 		fmt.Println("Erro ao subir o server:", err)
 		return
 	}
+
 }
