@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"example/go-taco/parse"
 	"net/http"
+	"os"
 )
 
 func List(w http.ResponseWriter, r *http.Request) {
-	f, err := parse.OpenFile("taco.json")
+	f, err := parse.OpenFile(os.Getenv("FILE_NAME"))
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
